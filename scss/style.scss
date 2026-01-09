@@ -1,0 +1,79 @@
+// VARIABLES
+$brand-main: #6600cc;
+$brand-sub: #cc66ff;
+$brand-dark: #333;
+$brand-light: #e6f2ff;
+
+// MIXINS
+@mixin shapping($height, $width, $rad, $bg, $color) {
+  height: $height;
+  width: $width;
+  border-radius: $rad;
+  background-color: $bg;
+  color: $color;
+}
+
+@mixin btn-main($padding, $rad, $bg, $color) {
+  padding: $padding;
+  border-radius: $rad;
+  background-color: $bg;
+  color: $color;
+  border-width: 0;
+  border-style: none;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  &:hover {
+    background-color: lighten($brand-main, 20%);
+  }
+}
+
+// STYLES
+body {
+  background-color: $brand-light;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+section {
+  background: $brand-sub;
+  color: $brand-dark;
+  width: 780px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 1%;
+  position: relative;
+  z-index: -2; // use carefully
+}
+
+.thumb1 {
+  @include shapping(120px, 120px, 10%, $brand-dark, $brand-light);
+  margin: 0 242px -90px;
+}
+
+.thumb2 {
+  @include shapping(100px, 100px, 50%, $brand-sub, $brand-dark);
+  margin: -50px 1120px;
+}
+
+/* Button example */
+.btn-main {
+  @include btn-main(15px 20px, 7px, $brand-main, #fff);
+}
+
+/* FIX ONLY: buttons used in HTML */
+.btn-1 {
+  @include btn-main(15px 20px, 7px, $brand-main, #fff);
+}
+
+.btn-2 {
+  @include btn-main(30px 2%, 50%, $brand-dark, white);
+  font-size: 2rem;
+
+  &:hover {
+    background-color: darken($brand-main, 20%);
+  }
+}
